@@ -11,9 +11,10 @@ phases:
   build:
     commands:
       - echo Building React app...
+      - cd frontend
       - npm run build
       - echo Building Docker image...
-      - docker build -t encryption-frontend .
+      - docker build -t encryption-frontend ./frontend
       - docker tag encryption-frontend:latest 793526290950.dkr.ecr.ap-southeast-2.amazonaws.com/encryption-frontend:latest
   post_build:
     commands:
@@ -24,4 +25,4 @@ phases:
 
 cache:
   paths:
-    - frontend/node_modules/**/* 
+    - frontend/node_modules/**/*
