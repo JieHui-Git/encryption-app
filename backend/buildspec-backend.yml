@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 793526290950.dkr.ecr.ap-southeast-2.amazonaws.com
+  build:
+    commands:
+      - echo Building the Docker image...
+      - docker build -t encryption-backend ./backend
+      - docker tag encryption-backend:latest 793526290950.dkr.ecr.ap-southeast-2.amazonaws.com/encryption-backend:latest
+  post_build:
+    commands:
+      - echo Pushing the Docker image...
+      - docker push 793526290950.dkr.ecr.ap-southeast-2.amazonaws.com/encryption-backend:latest
+artifacts:
+  files: '**/*'
