@@ -21,7 +21,7 @@ function App() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8080/api/files/encrypt', {
+      const response = await fetch('http://3.107.86.220:8080/api/files/encrypt', {
         method: 'POST',
         body: formData
       });
@@ -49,7 +49,7 @@ function App() {
     formData.append('file', zipFile);
 
     try {
-      const response = await fetch('http://localhost:8080/api/files/decrypt', {
+      const response = await fetch('http://3.107.86.220:8080/api/files/decrypt', {
         method: 'POST',
         body: formData
       });
@@ -79,7 +79,7 @@ function App() {
           setEncDownloadUrl('');
         }} />
         <br /><br />
-        <button onClick={handleEncryptUpload}>Encrypt & Upload</button>
+        <button onClick={handleEncryptUpload}>Encrypt</button>
         <p>{encStatus}</p>
         {encDownloadUrl && (
           <a href={encDownloadUrl} download="encrypted_package.zip">Download Encrypted File</a>
@@ -97,7 +97,7 @@ function App() {
           setDecDownloadUrl('');
         }} />
         <br /><br />
-        <button onClick={handleDecryptUpload}>Decrypt & Upload</button>
+        <button onClick={handleDecryptUpload}>Decrypt</button>
         <p>{decStatus}</p>
         {decDownloadUrl && (
           <a href={decDownloadUrl} download="decrypted.txt">Download Decrypted File</a>
