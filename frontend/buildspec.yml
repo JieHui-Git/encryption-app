@@ -1,0 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo Installing dependencies...
+      - cd encryption-frontend
+      - npm ci
+  build:
+    commands:
+      - echo Building React app...
+      - npm run build
+      - cd ..
+      - echo Building Docker image...
+      - docker build -t encryption-frontend ./encryption-frontend
+      - docker tag encryption-frontend:latest 793526290950.dkr.ecr.ap-southeast-2.amazonaws.com/encryption-frontend:latest
+  post_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 793526290950.dkr.ecr.ap-southeast-2.amazonaws.com
+      - echo Pushing Docker image...
+      - docker push 793526290950.dkr.ecr.ap-southeast-2.amazonaws.com/encryption-frontend:latest
+
+artifacts:
+  files:
+    - '**/*'
