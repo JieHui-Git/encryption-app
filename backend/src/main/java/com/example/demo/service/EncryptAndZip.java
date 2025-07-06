@@ -25,7 +25,7 @@ public class EncryptAndZip {
     private static final int IV_SIZE = 16; // CBC mode typically uses 16-byte IVs
     private static final int RSA_KEY_SIZE = 256; // Adjust based on your RSA key size
 
-    private static final String KEYSTORE_FILE = "C:\\Users\\jiehu\\Desktop\\encryptionTest\\encryptionTest\\cert\\certificate.pfx";
+    private static final String KEYSTORE_FILE = "/home/ec2-user/cert/certificate.pfx";
     private static final String KEYSTORE_PASSWORD = "your_password";
     private static final String KEY_ALIAS = "mykey";
 

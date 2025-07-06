@@ -17,7 +17,7 @@ import java.util.zip.ZipInputStream;
 
 public class UnzipAndDecrypt {
 
-    private static final String KEYPATH = "C:\\\\Users\\\\jiehu\\\\Desktop\\\\encryptionTest\\\\encryptionTest\\\\cert\\\\certificate.pfx"; // move your pfx file here
+    private static final String KEYPATH = "/home/ec2-user/cert/certificate.pfx"; // move your pfx file here
     private static final String KEYPASSWORD = "your_password";
     private static final String KEYALIAS = "mykey";
 

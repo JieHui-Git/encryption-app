@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/files/**")  // match your API path
-                .allowedOrigins("http://localhost:3000") // React dev server
+                .allowedOrigins("http://localhost:3000", "http://3.107.86.220:3000") // allow local dev and deployed
                 .allowedMethods("POST")
                 .allowedHeaders("*");
     }
